@@ -1,37 +1,45 @@
 <template>
-  <!-- <h1 
-  v-once
-  @click='add'>
-    {{ msg }}
-  </h1>
-  <h1 v-html='msg'></h1> -->
-  <h1 
-    :[attr]="'active'"
-    @[event]="add">
-    {{ msg }}
-  </h1>
+  <section v-if="hasFruit">
+    <h1>Fruits</h1>
+    <ul>
+      <li
+        v-for="fruit in fruits"
+        :key="fruit">
+        {{ fruit }}  
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h1>Reverse Fruits</h1>
+    <ul>
+      <li
+        v-for="fruit in reverseFruits"
+        :key="fruit">
+        {{ fruit }}
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      // msg: '<div style="color: red;">Hello!</div>'
-      msg: 'active',
-      attr: 'class',
-      event: 'click'
+      fruits: [
+       'Apple', 'Banana', 'Cherry'
+      ]
     }
-  }, 
-  methods: {
-    add() {
-      this.msg += '!'
+  },
+  computed: {
+    hasFruit() {
+      return this.fruits.length > 0
+    }, 
+    
+    reverseFruits() {
+      return this.fruits.map(fruit => {
+        return fruit.split('').reverse().join('')
+      })
     }
   }
 }
 </script>
-<style scoped>
-  .active {
-    color: rosybrown;
-    font-size: 100px;
-  }
-</style>
