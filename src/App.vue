@@ -1,45 +1,29 @@
 <template>
-  <section v-if="hasFruit">
-    <h1>Fruits</h1>
-    <ul>
-      <li
-        v-for="fruit in fruits"
-        :key="fruit">
-        {{ fruit }}  
-      </li>
-    </ul>
-  </section>
-  <section>
-    <h1>Reverse Fruits</h1>
-    <ul>
-      <li
-        v-for="fruit in reverseFruits"
-        :key="fruit">
-        {{ fruit }}
-      </li>
-    </ul>
-  </section>
-</template>
+  <h1> {{ reversedMessage }}</h1>
+  <h1> {{ reversedMessage }}</h1>
+  <h1> {{ reversedMessage }}</h1>
+  <h1> {{ reversedMessage }}</h1>
+  <h1> {{ reversedMessage }}</h1>
+</template> 
 
 <script>
+
 export default {
   data() {
     return {
-      fruits: [
-       'Apple', 'Banana', 'Cherry'
-      ]
+      msg: 'Hello Computed!!'
     }
   },
-  computed: {
-    hasFruit() {
-      return this.fruits.length > 0
-    }, 
-    
-    reverseFruits() {
-      return this.fruits.map(fruit => {
-        return fruit.split('').reverse().join('')
-      })
+  computed: {  // computed는 계산된 결과, 데이터
+    reversedMessage() {
+      return this.msg.split('').reverse().join('')
     }
-  }
+  },
+  // methods: {
+  //   reverseMessage() {
+  //     return this.msg.split('').reverse().join('')
+  //   }
+  // }
 }
+
 </script>
