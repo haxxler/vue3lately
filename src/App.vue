@@ -1,48 +1,28 @@
 <template>
-  <h1 @click="increase">
-    {{ count }}
-  </h1>
-  <div v-if="count > 4">
-    4보다 큽니다!
-  </div>
-  <ul>
-    <Fruit
-      v-for="fruit in fruits"
-      :key="fruit"
-      :name="fruit">
-      {{ fruit }}
-    </Fruit>
-  </ul>
+  <h1>{{ count }}</h1>
 </template>
 
 <script>
-import Fruit from '~/components/Fruit'
-export default{
-  components: {
-    Fruit
-  },
+export default {
   data() {
     return {
-      count: 0,
-      fruits: ['Apple', 'Banana', 'Cherry']
+      count: 2
     }
   },
-  methods: {
-    increase() {
-      this.count += 1
-    }
-  }
+  beforeCreate() {  // 활용도 떨어짐
+    console.log('Before Create!', this.count);
+  },
+  created() {
+    console.log('Created!', this.count);
+  },
+  beforeMount(){ // 활용도 떨어짐
+    console.log('Before Mount!');
+    console.log(document.querySelector('h1'));
+  },
+  mounted() { // 화면에 그려져 있는 내용을 조회하려면, mounted() 라이프 사이클 훅에서
+    console.log('Mounted!');
+    console.log(document.querySelector('h1'));
+   },
+
 }
 </script>
-
-<style lang="scss">
-  h1 {
-    font-size: 40px;
-    color: royalblue;
-  }
-  ul {
-    li {
-      font-size: 40px;
-    }
-  }
-</style>
