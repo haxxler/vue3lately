@@ -1,17 +1,10 @@
 <template>
-  <!-- <MyBtn text="Banana"/>
-  <MyBtn :color="color" text="Banana"/>
   <MyBtn 
-    large
-    color="royalblue"
-    text="Banana"/>
-  <MyBtn text="Banana"/> -->
-  <MyBtn>Banana</MyBtn>
-  <MyBtn :color="color">
-  <span style="color: red;">Apple</span>
+  class="haxxler"
+  style="color: red"
+  title="Hello World!">
+  Banana
   </MyBtn>
-  <MyBtn color="royalblue" large>Cherry</MyBtn>
-  <MyBtn>Orange</MyBtn>
 </template>
 
 <script>
@@ -21,11 +14,5 @@ export default{
   components: {
     MyBtn
   },
-  data() {
-    return {
-      color: '#000'
-    }
-  }
 }
-
 </script>

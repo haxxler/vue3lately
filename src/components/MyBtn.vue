@@ -1,29 +1,15 @@
 <template>
-  <div
-    :class="{ large }" 
-    :style="{ backgroundColor: color }"
-    class="btn">
+  <div class="btn">
     <slot></slot>
-    <!-- {{ text }} -->
-  </div>  
+  </div> 
+  <h1 v-bind="$attrs"></h1> 
 </template>
 
 <script>
 export default {
-  props: {
-    color: {
-      type: String,
-      default: 'gray'
-    },
-    large: {
-      type: Boolean,
-      default: false
-    },
-
-    // text: {
-    //   type: String,
-    //   default: ''
-    // }
+  inheritAttrs: false,
+  created() {
+    console.log(this.$attrs)
   }
 }
 </script>
