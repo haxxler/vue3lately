@@ -1,31 +1,9 @@
 <template>
   <div class="btn">
-    <slot></slot>
+    <slot name="icon"></slot>
+    <slot name="text"></slot>
   </div> 
-  <h1 @click="$emit('choose', $event)">ABC</h1>
-  <input 
-  type="text"
-  v-model="msg" /> <!-- 양방향 데이터 바인딩 -->
 </template>
-
-<script>
-export default {
-  emits: [
-    'choose',
-    'changeMsg'
-  ],
-  data() {
-    return {
-      msg: ''
-    }
-  },
-  watch: {
-    msg() {
-      this.$emit('changeMsg', this.msg)
-    }
-  }
-}
-</script>
 
 <style scoped>
   .btn {
