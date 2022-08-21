@@ -1,31 +1,22 @@
 <template>
-  <button @click="message = 'Good!'">
-    Click!
-  </button>
-  <h1>App: {{ message }}</h1>
-  <!-- <Parent :msg="message" /> -->
-  <Parent />
+  <!-- <h1 id="hello"> -->
+    <Hello ref="hello" />
 </template>
 
 <script>
-import Parent from '~/components/Parent'
-import { computed } from 'vue'
+import Hello from '~/components/Hello'
 
 export default {
   components: {
-    Parent
+    Hello
   },
-  data() {
-    return {
-      message: 'Hello world!'
-    }
+  created() {
+    console.log(this.$refs.hello) // 이 때는 적용안됨
   },
-  provide() {
-    return {
-      // msg: this.message
-      msg: computed(()=>this.message)
-    }
+  mounted() {
+  //  const h1El = document.querySelector('#hello')
+  //  console.log(h1El.textContent)
+   console.log(this.$refs.hello.$refs.good)
   }
 }
-
 </script>
