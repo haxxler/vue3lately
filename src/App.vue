@@ -1,9 +1,8 @@
 <template>
   <MyBtn 
-  class="haxxler"
-  style="color: red"
-  title="Hello World!">
-  Banana
+    @choose="log" 
+    @change-msg="logMsg">
+    Banana
   </MyBtn>
 </template>
 
@@ -14,5 +13,14 @@ export default{
   components: {
     MyBtn
   },
+  methods: {
+    log(event) {
+      console.log('Click!!');
+      console.log(event);
+    },
+    logMsg(msg) {
+      console.log(msg)
+    }
+  }
 }
 </script>

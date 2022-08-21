@@ -2,19 +2,32 @@
   <div class="btn">
     <slot></slot>
   </div> 
-  <h1 v-bind="$attrs"></h1> 
+  <h1 @click="$emit('choose', $event)">ABC</h1>
+  <input 
+  type="text"
+  v-model="msg" /> <!-- 양방향 데이터 바인딩 -->
 </template>
 
 <script>
 export default {
-  inheritAttrs: false,
-  created() {
-    console.log(this.$attrs)
+  emits: [
+    'choose',
+    'changeMsg'
+  ],
+  data() {
+    return {
+      msg: ''
+    }
+  },
+  watch: {
+    msg() {
+      this.$emit('changeMsg', this.msg)
+    }
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .btn {
     display: inline-block;
     margin: 4px;
@@ -23,9 +36,5 @@ export default {
     background-color: gray;
     color: white;
     cursor: pointer;
-    &.large {
-      font-size: 20px;
-      padding: 10px 20px;
-    }
   }
 </style>
