@@ -1,22 +1,25 @@
 <template>
-  <!-- <h1 id="hello"> -->
-    <Hello ref="hello" />
+  <MyBtn
+    class="haxxler"
+    style="color: red;"
+    color="#ff0000"
+    @hello="log">
+    Apple
+  </MyBtn>
 </template>
 
 <script>
-import Hello from '~/components/Hello'
+import MyBtn from '~/components/MyBtn'
 
 export default {
   components: {
-    Hello
+    MyBtn
   },
-  created() {
-    console.log(this.$refs.hello) // 이 때는 적용안됨
-  },
-  mounted() {
-  //  const h1El = document.querySelector('#hello')
-  //  console.log(h1El.textContent)
-   console.log(this.$refs.hello.$refs.good)
+  methods: {
+    log() {
+      console.log('Hello world!')
+    }
   }
 }
+
 </script>
